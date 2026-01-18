@@ -1,6 +1,5 @@
 import { Truck, Package, Shield, Clock, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import InquiryForm from "@/components/InquiryForm";
 const features = [
   {
     icon: Truck,
@@ -64,72 +63,64 @@ const BulkPurchaseSection = () => {
           ))}
         </div>
 
-        {/* Pricing Cards and Form */}
-        <div className="grid lg:grid-cols-3 gap-8 mb-12">
-          {/* Pricing Cards - Left side */}
-          <div className="lg:col-span-2 grid md:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Small Projects",
-                quantity: "100 - 500 Bags",
-                discount: "5% Off MRP",
-                features: ["Free delivery within city", "48-hour dispatch", "Basic support"],
-              },
-              {
-                title: "Medium Projects",
-                quantity: "500 - 5000 Bags",
-                discount: "12% Off MRP",
-                features: ["Pan-India free delivery", "24-hour dispatch", "Priority support", "Flexible payment terms"],
-                highlighted: true,
-              },
-              {
-                title: "Large Projects",
-                quantity: "5000+ Bags",
-                discount: "20% Off MRP",
-                features: ["Dedicated fleet", "Same-day dispatch", "Dedicated account manager", "Credit facility available"],
-              },
-            ].map((plan, index) => (
-              <div
-                key={index}
-                className={`rounded-2xl p-6 ${
-                  plan.highlighted
-                    ? "bg-primary text-primary-foreground ring-4 ring-secondary/30 scale-105"
-                    : "bg-card text-card-foreground shadow-card"
-                } transition-all duration-300`}
-              >
-                <h3 className="font-display text-lg font-bold mb-2">{plan.title}</h3>
-                <p className={`text-sm mb-3 ${plan.highlighted ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
-                  {plan.quantity}
-                </p>
-                <div className="text-2xl font-display font-bold mb-4">
-                  {plan.discount}
-                </div>
-                <ul className="space-y-2 mb-6">
-                  {plan.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-center gap-2 text-sm">
-                      <div className={`w-1.5 h-1.5 rounded-full ${plan.highlighted ? "bg-secondary" : "bg-secondary"}`} />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <a href={`tel:${phoneNumber}`}>
-                  <Button
-                    variant={plan.highlighted ? "hero" : "outline"}
-                    className="w-full gap-2"
-                    size="default"
-                  >
-                    <Phone className="w-4 h-4" />
-                    Get Quote
-                  </Button>
-                </a>
+        {/* Pricing Cards */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12">
+          {[
+            {
+              title: "Small Projects",
+              quantity: "100 - 500 Bags",
+              discount: "5% Off MRP",
+              features: ["Free delivery within city", "48-hour dispatch", "Basic support"],
+            },
+            {
+              title: "Medium Projects",
+              quantity: "500 - 5000 Bags",
+              discount: "12% Off MRP",
+              features: ["Pan-India free delivery", "24-hour dispatch", "Priority support", "Flexible payment terms"],
+              highlighted: true,
+            },
+            {
+              title: "Large Projects",
+              quantity: "5000+ Bags",
+              discount: "20% Off MRP",
+              features: ["Dedicated fleet", "Same-day dispatch", "Dedicated account manager", "Credit facility available"],
+            },
+          ].map((plan, index) => (
+            <div
+              key={index}
+              className={`rounded-2xl p-6 ${
+                plan.highlighted
+                  ? "bg-primary text-primary-foreground ring-4 ring-secondary/30 scale-105"
+                  : "bg-card text-card-foreground shadow-card"
+              } transition-all duration-300`}
+            >
+              <h3 className="font-display text-lg font-bold mb-2">{plan.title}</h3>
+              <p className={`text-sm mb-3 ${plan.highlighted ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+                {plan.quantity}
+              </p>
+              <div className="text-2xl font-display font-bold mb-4">
+                {plan.discount}
               </div>
-            ))}
-          </div>
-
-          {/* Inquiry Form - Right side */}
-          <div className="lg:col-span-1">
-            <InquiryForm />
-          </div>
+              <ul className="space-y-2 mb-6">
+                {plan.features.map((feature, fIndex) => (
+                  <li key={fIndex} className="flex items-center gap-2 text-sm">
+                    <div className={`w-1.5 h-1.5 rounded-full ${plan.highlighted ? "bg-secondary" : "bg-secondary"}`} />
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+              <a href={`tel:${phoneNumber}`}>
+                <Button
+                  variant={plan.highlighted ? "hero" : "outline"}
+                  className="w-full gap-2"
+                  size="default"
+                >
+                  <Phone className="w-4 h-4" />
+                  Get Quote
+                </Button>
+              </a>
+            </div>
+          ))}
         </div>
       </div>
     </section>
